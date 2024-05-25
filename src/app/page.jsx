@@ -7,37 +7,35 @@ import {
 	Image,
 } from "@nextui-org/react";
 
-export default async function Home() {
-	const homePageCards = (title, message, url) => {
-		return (
-			<Link href={`/${title}`} className="my-1">
-				<Card className="max-w-[400px]  border-1 border-gray-500">
-					<CardHeader className="flex gap-3">
-						<Image
-							alt="nextui logo"
-							height={40}
-							width={40}
-							radius="sm"
-							src={url}
-						/>
-						<div className="flex flex-col">
-							<p className="text-md">{title}</p>
-							<p className="text-small text-default-500">
-								dramalama/{title}
-							</p>
-						</div>
-					</CardHeader>
-					<Divider className="bg-slate-400" />
-					<CardBody>
-						<p>{message}</p>
-					</CardBody>
-				</Card>
-			</Link>
-		);
-	};
+export default function Home() {
+	const homePageCards = (title, message, url) => (
+		<Link href={`/${title}`} className="my-1">
+			<Card className="max-w-[400px] border-1 border-gray-500">
+				<CardHeader className="flex gap-3">
+					<Image
+						alt={`${title} image`}
+						height={40}
+						width={40}
+						radius="sm"
+						src={url}
+					/>
+					<div className="flex flex-col">
+						<p className="text-md">{title}</p>
+						<p className="text-small text-default-500">
+							dramalama/{title}
+						</p>
+					</div>
+				</CardHeader>
+				<Divider className="bg-slate-400" />
+				<CardBody>
+					<p>{message}</p>
+				</CardBody>
+			</Card>
+		</Link>
+	);
 
 	return (
-		<section className="h-screen w-screen flex flex-col items-center justify-center ">
+		<section className="h-screen w-screen flex flex-col items-center justify-center">
 			{homePageCards(
 				"anime",
 				"Gravity of anime constant state of falling into the depths of happiness and joy",
@@ -56,5 +54,3 @@ export default async function Home() {
 		</section>
 	);
 }
-
-// Test push
