@@ -1,33 +1,31 @@
-const apiConfig = {
-    baseUrl: 'https://api.themoviedb.org/3',
-    apiKey: '73bbcb846da6fff8be578b7da63fadd2',
-    apiReadAccessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3M2JiY2I4NDZkYTZmZmY4YmU1NzhiN2RhNjNmYWRkMiIsInN1YiI6IjY2NTFiZDYxMDJmMjk0Zjc1MTI2ZjE1NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.24VOm8isrbIHqYZ9XwPkfmc3sGam754W-k2BQFKA4kg',
-    originalImage: (imgPath) => `https://image.tmdb.org/t/p/original/${imgPath}`,
-    w500Image: (imgPath) => `https://image.tmdb.org/t/p/w500/${imgPath}`
-};
+// API key for TMDb API authentication
+export const API_KEY = "73bbcb846da6fff8be578b7da63fadd2";
 
-const PROXY = "https://sup-proxy.zephex0-f6c.workers.dev/api-json?url=";
+// Proxy URL to handle CORS issues
+export const PROXY = "https://sup-proxy.zephex0-f6c.workers.dev/api-json?url=";
 
-export const TRENDING = `${PROXY}${apiConfig.baseUrl}/trending/movie/day?api_key=${apiConfig.apiKey}`;
+// Endpoint to get trending movies of the day
+export const TRENDING = `${PROXY}https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
 
+// Function to get the search URL for a movie title
 export const SEARCH = (title) => {
-    return `${PROXY}${apiConfig.baseUrl}/search/movie?api_key=${apiConfig.apiKey}&query=${title}`;
+	return `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${title}`;
 };
 
-export const POPULAR = `${PROXY}${apiConfig.baseUrl}/movie/popular?api_key=${apiConfig.apiKey}`;
+// Endpoint to get popular movies
+export const POPULAR = `${PROXY}https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
 
+// Function to get detailed information about a specific movie by ID
 export const getInfoURL = (movieId) => {
-    return `${PROXY}${apiConfig.baseUrl}/movie/${movieId}?api_key=${apiConfig.apiKey}`;
+	return `${PROXY}https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`;
 };
 
-export const TOP_RATED = `${PROXY}${apiConfig.baseUrl}/movie/top_rated?api_key=${apiConfig.apiKey}`;
+// Endpoint to get top-rated movies
+export const TOP_RATED = `${PROXY}https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}`;
 
-export const UPCOMING_MOVIES = `${PROXY}${apiConfig.baseUrl}/movie/upcoming?api_key=${apiConfig.apiKey}`;
+// Endpoint to get upcoming movies
+export const UPCOMING_MOVIES = `${PROXY}https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}`;
 
-export const NOW_IN_THEATERS = `${PROXY}${apiConfig.baseUrl}/movie/now_playing?api_key=${apiConfig.apiKey}`;
+// Endpoint to get movies currently playing in theaters
+export const NOW_IN_THEATERS = `${PROXY}https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}`;
 
-export const getImageUrl = (imgPath, size = 'original') => {
-    return size === 'w500' ? apiConfig.w500Image(imgPath) : apiConfig.originalImage(imgPath);
-};
-
-export default apiConfig;
